@@ -5,6 +5,7 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
+      transparent_background = true,
       integrations = {
         aerial = true,
         alpha = true,
@@ -49,7 +50,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      colorscheme = "catppuccin-frappe",
     },
   },
 }
