@@ -7,3 +7,10 @@ vim.opt.expandtab = true
 vim.opt.tabstop=4
 vim.opt.shiftwidth=4
 vim.opt.softtabstop=4
+
+-- If has powershell use powershell
+if vim.fn.executable('pws') then
+    vim.o.shell = 'pwsh'
+else
+    vim.o.shell = 'powershell'
+end
