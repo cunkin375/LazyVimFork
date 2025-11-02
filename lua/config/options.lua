@@ -3,7 +3,16 @@
 -- Add any additional options here
 vim.g.snacks_animate = false
 vim.g.autoformat = false
-vim.opt.expandtab = true
-vim.opt.tabstop=4
-vim.opt.shiftwidth=4
-vim.opt.softtabstop=4
+vim.o.relativenumber = true
+vim.o.expandtab = true
+vim.o.guicursor = 'n-v-c-i:block'
+
+-- Tab settings
+vim.o.tabstop=4
+vim.o.shiftwidth=4
+vim.o.softtabstop=4
+
+-- Side number settings
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#AAACf6" })
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#8A85AD" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#8A85AD" })
