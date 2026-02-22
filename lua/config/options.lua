@@ -19,16 +19,15 @@ vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#8A85AD" })
 vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#8A85AD" })
 
 
--- If has powershell use powershell
+-- Set vim terminal to appropriate shell
 local mysysname = vim.loop.os_uname().sysname
 local is_windows = mysysname:find("Windows")
-
 if is_windows then
     if vim.fn.executable('pws') then
         vim.o.shell = 'pwsh'
     else
         vim.o.shell = 'powershell'
-    end
+    end -- if
 else
     vim.opt.shell = "bash"
-end
+end -- if
