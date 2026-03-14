@@ -23,6 +23,8 @@ local mysysname = vim.loop.os_uname().sysname
 local is_windows = mysysname:find("Windows")
 if is_windows then
     if vim.fn.executable("pws") then
+        vim.o.shell = "pwsh"
+    else
         vim.o.shell = "powershell"
     end -- if
     vim.opt.shellcmdflag = [[
