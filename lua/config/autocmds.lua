@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.tpp" },
   command = "set filetype=cpp",
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.p8" },
+    callback = function()
+        vim.bo.filetype = "p8"
+    end,
+})
