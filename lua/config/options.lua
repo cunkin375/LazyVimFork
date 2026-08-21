@@ -23,19 +23,32 @@ vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#8A85AD" })
 local mysysname = vim.loop.os_uname().sysname
 local is_windows = mysysname:find("Windows")
 if is_windows then
-    if vim.fn.executable("pws") then
-        vim.o.shell = "pwsh"
-    else
-        vim.o.shell = "powershell"
-    end -- if
-    vim.opt.shellcmdflag = [[
+  if vim.fn.executable("pws") then
+    vim.o.shell = "pwsh"
+  else
+    vim.o.shell = "powershell"
+  end -- if
+  vim.opt.shellcmdflag = [[
                 -NoLogo -NoProfile -ExecutionPolicy RemoteSigned 
                 -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
                          ]]
-    vim.opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-    vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-    vim.opt.shellquote = ""
-    vim.opt.shellxquote = ""
+  vim.opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
 else
-    vim.opt.shell = "bash"
+  vim.opt.shell = "bash"
 end -- if
+
+-- Floating terminal
+vim.keymap.set({ "n", "t" }, "<c-/>", function()
+  Snacks.terminal.toggle(nil, {
+    win = {
+      style = "terminal",
+      relative = "editor",
+      width = 0.8,
+      height = 0.8,
+      position = "float",
+    },
+  })
+end, { desc = "Toggle Centered Termial" })

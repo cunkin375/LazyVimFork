@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.keymap.del({ "i", "x", "n", "s"}, "<C-s>")
+vim.keymap.del({ "i", "x", "n", "s" }, "<C-s>")
 
 local map = vim.keymap.set
 
@@ -11,7 +11,7 @@ map({ "n", "t" }, "<c-/>", function()
   if vim.bo.filetype == "snacks_terminal" then
     vim.cmd("close")
   else
-    Snacks.terminal(nil, { cwd = LazyVim.root() })
+    Snacks.terminal(nil, { cwd = LazyVim.root(), win = { position = "float" } })
   end
 end, { desc = "Terminal (Root Dir)" })
 
@@ -19,6 +19,16 @@ map({ "n", "t" }, "<c-_>", function()
   if vim.bo.filetype == "snacks_terminal" then
     vim.cmd("close")
   else
-    Snacks.terminal(nil, { cwd = LazyVim.root() })
+    Snacks.terminal(nil, {
+      cwd = LazyVim.root(),
+      win = {
+        style = "terminal",
+        relative = "editor",
+        width = 0.8,
+        height = 0.8,
+        border = "rounded",
+        position = "float",
+      },
+    })
   end
 end, { desc = "Terminal (Root Dir)" })
