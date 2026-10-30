@@ -37,7 +37,7 @@ if is_windows then
   vim.opt.shellquote = ""
   vim.opt.shellxquote = ""
 else
-  vim.opt.shell = "bash"
+  vim.opt.shell = "zsh"
 end -- if
 
 -- Floating terminal
